@@ -1,0 +1,24 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+// 按讚記錄
+model LikeRecord {
+  id        Int      @id @default(autoincrement())
+  userId    String   @map("user_id")
+  postId    String   @map("post_id")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@unique([userId, postId])
+}
+
+// 文章統計
+model PostStats {
+  postId    String @id @map("post_id")
+  likeCount Int    @default(0) @map("like_count")
+}
