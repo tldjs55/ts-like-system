@@ -70,7 +70,10 @@ docker-compose up -d
 # 3. 建立資料表
 npx prisma migrate dev
 
-# 4. 啟動後端伺服器
+# 4. 生成 Prisma Client
+npx prisma generate
+
+# 5. 啟動後端伺服器
 npm run dev
 ```
 
